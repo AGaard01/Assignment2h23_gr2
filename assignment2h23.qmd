@@ -302,6 +302,8 @@ print(summary_stats)
 >>>>>>> 4357e0a48ecf647de1d785874f04a4aa331aee1b
 # Konklusjon
 
+Her kommer det en glimrende koklusjon.
+
 # Referanser
 
 ```{r}
