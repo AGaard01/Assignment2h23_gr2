@@ -1,5 +1,5 @@
 ---
-title: "Assignment_2"
+title: "Assignment 2"
 format: html
 editor: visual
 ---
@@ -8,7 +8,7 @@ editor: visual
 #| label: setup
 #| output: false
 #| message: false
-#| Echo: false
+#| echo: false
 library(tidyverse)
 library(gridExtra)
 library(modelr)
@@ -18,6 +18,7 @@ library(vtable)
 ```
 
 ```{r}
+#| echo: false
 hoyde <- modelr::heights
 
 hoyde <- hoyde %>%
@@ -62,13 +63,15 @@ hoydeHighInc <- hoyde |>
 ### Høyde og inntekt
 
 ```{r}
+#| echo: false
 hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = height,
-    y = income
-    )
-) + 
+    y = income,
+    color = sex
+    )) + 
+    scale_color_manual(values = c("male" = "blue", "female" = "red")) +
 geom_jitter(
 size = 1, 
 alpha = 0.40 
@@ -82,25 +85,18 @@ geom_smooth(
   )
 ```
 
-```{r}
-# number of NAs in each variable
-# drop variables with no NA
-heights %>% 
-  is.na() %>% 
-  colSums()
-```
-
 ### Høyde og inntekt mht. kjønn
 
 ```{r}
-# Fjerner ekstremverdier for inntekt ved filter.
+#| echo: false
 hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = height,
-    y = income
-    )
-) + 
+    y = income,
+    color = sex
+    )) + 
+    scale_color_manual(values = c("male" = "blue", "female" = "red")) +
 geom_jitter(
 size = 1, 
 alpha = 0.40 
@@ -120,6 +116,7 @@ geom_smooth(
 ### Høyde zero income
 
 ```{r}
+#| echo: false
 hoydeZeroInc %>% 
   select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
   vtable::st(group = 'sex')
@@ -128,6 +125,7 @@ hoydeZeroInc %>%
 ### Høyde high income
 
 ```{r}
+#| echo: false
 hoydeHighInc %>% 
   select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
   vtable::st(group = 'sex')
@@ -136,6 +134,7 @@ hoydeHighInc %>%
 ### Høyde normal income
 
 ```{r}
+#| echo: false
 hoydeNormInc %>% 
   select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
   vtable::st(group = 'sex')
@@ -145,12 +144,55 @@ hoydeNormInc %>%
 
 ### Kategori 65 tommer (165,1 cm)
 
+<<<<<<< HEAD
 ### Kategori 66 tommer (167,6 cm)
 
 ### Kategori 67 tommer (170,2 cm)
 
 ### Kategori 68 tommer (172,7 cm)
 
+=======
+```{r}
+#| echo: false
+hoyde65 <- hoyde |> 
+  filter(height == 65) |> 
+  aggregate(income ~ sex, hoyde = height, FUN = mean)
+print(hoyde65)
+```
+
+### Kategori 66 tommer (167,6 cm)
+
+```{r}
+#| echo: false
+hoyde66 <- hoyde |> 
+  filter(height == 66) |> 
+  aggregate(income ~ sex, hoyde = height, FUN = mean)
+print(hoyde66)
+```
+
+### Kategori 67 tommer (170,2 cm)
+
+```{r}
+#| echo: false
+hoyde67 <- hoyde |> 
+  filter(height == 67) |> 
+  aggregate(income ~ sex, hoyde = height, FUN = mean)
+print(hoyde67)
+```
+
+### Kategori 68 tommer (172,7 cm)
+
+```{r}
+#| echo: false
+hoyde68 <- hoyde |> 
+  filter(height == 68) |> 
+  aggregate(income ~ sex, hoyde = height, FUN = mean)
+print(hoyde68)
+```
+
+## Er det markante kjønnsforskjeller i hoydeZeroInc og hoydeHighInc?
+
+>>>>>>> 61901f3 (Ferdig med koding 16.10.23)
 ## Sammenhengen mellom ansiennitet (alder) og inntekt
 
 <<<<<<< HEAD
@@ -158,13 +200,15 @@ hoydeNormInc %>%
 ### Alder og inntekt
 
 ```{r}
+#| echo: false
 hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = age,
-    y = income
-    )
-) + 
+    y = income,
+    color = sex
+    )) + 
+    scale_color_manual(values = c("male" = "blue", "female" = "red")) +
 geom_jitter(
 size = 1, 
 alpha = 0.40 
@@ -181,13 +225,15 @@ geom_smooth(
 ### Alder og inntekt mht. kjønn
 
 ```{r}
+#| echo: false
 hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = age,
-    y = income
-    )
-) + 
+    y = income,
+    color = sex
+    )) + 
+    scale_color_manual(values = c("male" = "blue", "female" = "red")) +
 geom_jitter(
 size = 1, 
 alpha = 0.40 
@@ -202,24 +248,44 @@ geom_smooth(
 facet_wrap(~sex)
 ```
 
-## Høyde menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra høyde menn/kvinner i hoydeNormInc.
+## Alder menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra alder menn/kvinner i hoydeNormInc.
 
 ### Alder zero income
 
 ```{r}
-# PIVOT.WIDER
+#| echo: false
+# Calculate the number of observations based on age and sex
+count_table <- hoydeZeroInc %>%
+  group_by(age, sex) %>%
+  summarise(Count = n()) |> 
+  pivot_wider(
+    names_from = sex,
+    values_from = Count
+  )
+# Display the table
+print(count_table)
 ```
 
 ### Alder high income
 
 ```{r}
-# PIVOT.WIDER
+#| echo: false
+# Calculate the number of observations based on age and sex
+count_table <- hoydeHighInc %>%
+  group_by(age, sex) %>%
+  summarise(Count = n()) |> 
+  pivot_wider(
+    names_from = sex,
+    values_from = Count
+  )
+# Display the table
+print(count_table)
 ```
 
 ### Alder normal income
 
 ```{r}
-# PIVOT.WIDER
+#| echo: false
 summary_stats <- hoydeNormInc %>%
   group_by(age, sex) %>%
   summarise(
@@ -243,6 +309,7 @@ print(summary_stats)
 # siste
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 Spørsmål:
@@ -255,3 +322,5 @@ Alder og inntekt: Hvordan best se grafisk?
 
 Hvordan få tabell med statistikk?
 >>>>>>> 4357e0a48ecf647de1d785874f04a4aa331aee1b
+=======
+>>>>>>> 61901f3 (Ferdig med koding 16.10.23)
