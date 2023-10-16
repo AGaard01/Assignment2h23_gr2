@@ -1,0 +1,217 @@
+---
+title: "Assignment_2"
+format: html
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| output: false
+#| message: false
+#| Echo: false
+library(tidyverse)
+library(gridExtra)
+library(modelr)
+library(grid)
+library(ggplotify)
+library(vtable)
+```
+
+```{r}
+hoyde <- modelr::heights
+
+hoyde <- hoyde %>%
+  mutate(
+    bmi = weight * 0.4536/(height * 2.54/100)^2,
+    married = fct_collapse(
+      .f = marital,
+      married = "married",
+      other_level = "not married"
+    ),
+    edu_fac = cut(
+      x = education,
+      breaks = c(0, 12, 14, 16, 21),
+      labels = c("not_hs", "not_cc", "not_col", "col_plus"),
+      right = FALSE
+    )
+    
+) |>
+# reorganiserer data s.a. de fire faktor-variablerne kommer lengst til høyre
+select(income:age, education:bmi, everything()) |>
+# Dropper marital og education siden disse ikke skal brukes
+select(-education, -marital)
+
+# Inntekt lik 0
+hoydeZeroInc <- hoyde |>
+  filter(income == 0)
+# «Normal» inntekt
+hoydeNormInc <- hoyde |>
+  filter(income > 0 & income < 343830)
+hoydeHighInc <- hoyde |>
+  filter(income == 343830)
+```
+
+# Innledning
+
+# Litteraturgjennomgang
+
+# EDA av datasettet
+
+## Sammenhengen mellom kjønn og inntekt
+
+### Høyde og inntekt
+
+```{r}
+hoyde  |>
+  filter(income < 300000) |> 
+  ggplot(
+  mapping = aes(
+    x = height,
+    y = income
+    )
+) + 
+geom_jitter(
+size = 1, 
+alpha = 0.40 
+) +
+geom_smooth(
+  formula = y ~ x,
+  method = "lm",
+  colour = "black",
+  lwd = 0.75,
+  se = FALSE
+  )
+```
+
+```{r}
+# number of NAs in each variable
+# drop variables with no NA
+heights %>% 
+  is.na() %>% 
+  colSums()
+```
+
+### Høyde og inntekt mht. kjønn
+
+```{r}
+# Fjerner ekstremverdier for inntekt ved filter.
+hoyde  |>
+  filter(income < 300000) |> 
+  ggplot(
+  mapping = aes(
+    x = height,
+    y = income
+    )
+) + 
+geom_jitter(
+size = 1, 
+alpha = 0.40 
+) +
+geom_smooth(
+  formula = y ~ x,
+  method = "lm",
+  colour = "black",
+  lwd = 0.75,
+  se = FALSE
+  ) +
+  facet_wrap(~sex)
+```
+
+## Høyde menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra høyde menn/kvinner i hoydeNormInc.
+
+### Høyde zero income
+
+```{r}
+hoydeZeroInc  |>
+  ggplot(
+  mapping = aes(
+    x = height,
+    y = income
+    )
+) + 
+geom_jitter(
+size = 1, 
+alpha = 0.40 
+) +
+facet_wrap(~sex)
+```
+
+```{r}
+hoydeZeroInc %>% 
+  select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
+  vtable::st(group = 'sex')
+```
+
+### Høyde high income
+
+```{r}
+hoydeHighInc  |>
+  ggplot(
+  mapping = aes(
+    x = height,
+    y = income
+    )
+) + 
+geom_jitter(
+size = 1, 
+alpha = 0.40 
+) +
+facet_wrap(~sex)
+```
+
+```{r}
+hoydeHighInc %>% 
+  select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
+  vtable::st(group = 'sex')
+```
+
+### Høyde normal income
+
+```{r}
+hoydeNormInc  |>
+  ggplot(
+  mapping = aes(
+    x = height,
+    y = income
+    )
+) + 
+geom_jitter(
+size = 1, 
+alpha = 0.40 
+) +
+geom_smooth(
+  formula = y ~ x,
+  method = "lm",
+  colour = "black",
+  lwd = 0.75,
+  se = FALSE
+  ) +
+  facet_wrap(~sex)
+```
+
+```{r}
+hoydeNormInc %>% 
+  select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
+  vtable::st(group = 'sex')
+```
+
+## Inntektforskjeller mellom menn og kvinner som er like høye
+
+### Kategori 65 tommer (165,1 cm)
+
+### Kategori 66 tommer (167,6 cm)
+
+### Kategori 67 tommer (170,2 cm)
+
+### Kategori 68 tommer (172,7 cm)
+
+## Sammenhengen mellom ansiennitet (alder) og inntekt
+
+# Konklusjon
+
+# Referanser
+
+```{r}
+#| echo: false
+# siste
+```
