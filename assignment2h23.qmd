@@ -224,8 +224,11 @@ summary_stats <- hoydeNormInc %>%
   group_by(age, sex) %>%
   summarise(
     Mean_Income = mean(income)
+  ) |> 
+  pivot_wider(
+    names_from = sex,
+    values_from = Mean_Income
   )
-
 # Display the summary statistics
 print(summary_stats)
 ```
