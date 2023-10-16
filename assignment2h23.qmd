@@ -62,8 +62,7 @@ hoydeHighInc <- hoyde |>
 ### Høyde og inntekt
 
 ```{r}
-hoyde  |>
-  filter(income < 300000) |> 
+hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = height,
@@ -95,8 +94,7 @@ heights %>%
 
 ```{r}
 # Fjerner ekstremverdier for inntekt ved filter.
-hoyde  |>
-  filter(income < 300000) |> 
+hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = height,
@@ -122,21 +120,6 @@ geom_smooth(
 ### Høyde zero income
 
 ```{r}
-hoydeZeroInc  |>
-  ggplot(
-  mapping = aes(
-    x = height,
-    y = income
-    )
-) + 
-geom_jitter(
-size = 1, 
-alpha = 0.40 
-) +
-facet_wrap(~sex)
-```
-
-```{r}
 hoydeZeroInc %>% 
   select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
   vtable::st(group = 'sex')
@@ -145,49 +128,12 @@ hoydeZeroInc %>%
 ### Høyde high income
 
 ```{r}
-hoydeHighInc  |>
-  ggplot(
-  mapping = aes(
-    x = height,
-    y = income
-    )
-) + 
-geom_jitter(
-size = 1, 
-alpha = 0.40 
-) +
-facet_wrap(~sex)
-```
-
-```{r}
 hoydeHighInc %>% 
   select(-weight, -age, -afqt, -bmi, -married, -edu_fac) %>% 
   vtable::st(group = 'sex')
 ```
 
 ### Høyde normal income
-
-```{r}
-hoydeNormInc  |>
-  ggplot(
-  mapping = aes(
-    x = height,
-    y = income
-    )
-) + 
-geom_jitter(
-size = 1, 
-alpha = 0.40 
-) +
-geom_smooth(
-  formula = y ~ x,
-  method = "lm",
-  colour = "black",
-  lwd = 0.75,
-  se = FALSE
-  ) +
-  facet_wrap(~sex)
-```
 
 ```{r}
 hoydeNormInc %>% 
@@ -237,9 +183,10 @@ print(hoyde68)
 
 ## Sammenhengen mellom ansiennitet (alder) og inntekt
 
+### Alder og inntekt
+
 ```{r}
-hoyde  |>
-  filter(income < 300000) |> 
+hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = age,
@@ -259,9 +206,10 @@ geom_smooth(
   )
 ```
 
+### Alder og inntekt mht. kjønn
+
 ```{r}
-hoyde  |>
-  filter(income < 300000) |> 
+hoydeNormInc  |>
   ggplot(
   mapping = aes(
     x = age,
@@ -282,10 +230,32 @@ geom_smooth(
 facet_wrap(~sex)
 ```
 
+## Høyde menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra høyde menn/kvinner i hoydeNormInc.
+
+### Alder zero income
+
 ```{r}
-hoyde %>% 
-  select(-weight, -afqt, -bmi, -married, -edu_fac) %>% 
-  vtable::st(group = 'age')
+# PIVOT.WIDER
+```
+
+### Alder high income
+
+```{r}
+# PIVOT.WIDER
+```
+
+### Alder normal income
+
+```{r}
+# PIVOT.WIDER
+summary_stats <- hoydeNormInc %>%
+  group_by(age, sex) %>%
+  summarise(
+    Mean_Income = mean(income)
+  )
+
+# Display the summary statistics
+print(summary_stats)
 ```
 
 # Konklusjon
@@ -303,4 +273,6 @@ Hvorfor minusverdier for zeroincome?
 
 Hvorfor samme gjennomsnittsinntekt for highincome?
 
-Sammenheng mellom alder og inntekt når det er så få aldersgrupper?
+Alder og inntekt: Hvordan best se grafisk?
+
+Hvordan få tabell med statistikk?
