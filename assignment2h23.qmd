@@ -144,14 +144,6 @@ hoydeNormInc %>%
 
 ### Kategori 65 tommer (165,1 cm)
 
-<<<<<<< HEAD
-### Kategori 66 tommer (167,6 cm)
-
-### Kategori 67 tommer (170,2 cm)
-
-### Kategori 68 tommer (172,7 cm)
-
-=======
 ```{r}
 #| echo: false
 hoyde65 <- hoyde |> 
@@ -192,11 +184,9 @@ print(hoyde68)
 
 ## Er det markante kjønnsforskjeller i hoydeZeroInc og hoydeHighInc?
 
->>>>>>> 61901f3 (Ferdig med koding 16.10.23)
+
 ## Sammenhengen mellom ansiennitet (alder) og inntekt
 
-<<<<<<< HEAD
-=======
 ### Alder og inntekt
 
 ```{r}
@@ -299,7 +289,6 @@ summary_stats <- hoydeNormInc %>%
 print(summary_stats)
 ```
 
->>>>>>> 4357e0a48ecf647de1d785874f04a4aa331aee1b
 # Konklusjon
 
 Her kommer det en glimrende koklusjon.
@@ -310,19 +299,4 @@ Her kommer det en glimrende koklusjon.
 #| echo: false
 # siste
 ```
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-Spørsmål:
-
-Hvorfor minusverdier for zeroincome?
-
-Hvorfor samme gjennomsnittsinntekt for highincome?
-
-Alder og inntekt: Hvordan best se grafisk?
-
-Hvordan få tabell med statistikk?
->>>>>>> 4357e0a48ecf647de1d785874f04a4aa331aee1b
-=======
->>>>>>> 61901f3 (Ferdig med koding 16.10.23)
