@@ -184,7 +184,6 @@ print(hoyde68)
 
 ## Er det markante kjønnsforskjeller i hoydeZeroInc og hoydeHighInc?
 
-
 ## Sammenhengen mellom ansiennitet (alder) og inntekt
 
 ### Alder og inntekt
@@ -244,6 +243,7 @@ facet_wrap(~sex)
 
 ```{r}
 #| echo: false
+#| warning: false
 # Calculate the number of observations based on age and sex
 count_table <- hoydeZeroInc %>%
   group_by(age, sex) %>%
@@ -260,6 +260,7 @@ print(count_table)
 
 ```{r}
 #| echo: false
+#| warning: false
 # Calculate the number of observations based on age and sex
 count_table <- hoydeHighInc %>%
   group_by(age, sex) %>%
@@ -276,6 +277,7 @@ print(count_table)
 
 ```{r}
 #| echo: false
+#| warning: false
 summary_stats <- hoydeNormInc %>%
   group_by(age, sex) %>%
   summarise(
@@ -299,4 +301,3 @@ Her kommer det en glimrende koklusjon.
 #| echo: false
 # siste
 ```
-
