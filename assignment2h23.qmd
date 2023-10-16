@@ -199,94 +199,13 @@ hoydeNormInc %>%
 
 ### Kategori 65 tommer (165,1 cm)
 
-```{r}
-hoyde65 <- hoyde |> 
-  filter(height == 65) |> 
-  aggregate(income ~ sex, hoyde = height, FUN = mean)
-print(hoyde65)
-```
-
 ### Kategori 66 tommer (167,6 cm)
-
-```{r}
-hoyde66 <- hoyde |> 
-  filter(height == 66) |> 
-  aggregate(income ~ sex, hoyde = height, FUN = mean)
-print(hoyde66)
-```
 
 ### Kategori 67 tommer (170,2 cm)
 
-```{r}
-hoyde67 <- hoyde |> 
-  filter(height == 67) |> 
-  aggregate(income ~ sex, hoyde = height, FUN = mean)
-print(hoyde67)
-```
-
 ### Kategori 68 tommer (172,7 cm)
 
-```{r}
-hoyde68 <- hoyde |> 
-  filter(height == 68) |> 
-  aggregate(income ~ sex, hoyde = height, FUN = mean)
-print(hoyde68)
-```
-
-## Er det markante kjønnsforskjeller i hoydeZeroInc og hoydeHighInc?
-
 ## Sammenhengen mellom ansiennitet (alder) og inntekt
-
-```{r}
-hoyde  |>
-  filter(income < 300000) |> 
-  ggplot(
-  mapping = aes(
-    x = age,
-    y = income
-    )
-) + 
-geom_jitter(
-size = 1, 
-alpha = 0.40 
-) +
-geom_smooth(
-  formula = y ~ x,
-  method = "lm",
-  colour = "black",
-  lwd = 0.75,
-  se = FALSE
-  )
-```
-
-```{r}
-hoyde  |>
-  filter(income < 300000) |> 
-  ggplot(
-  mapping = aes(
-    x = age,
-    y = income
-    )
-) + 
-geom_jitter(
-size = 1, 
-alpha = 0.40 
-) +
-geom_smooth(
-  formula = y ~ x,
-  method = "lm",
-  colour = "black",
-  lwd = 0.75,
-  se = FALSE
-  ) +
-facet_wrap(~sex)
-```
-
-```{r}
-hoyde %>% 
-  select(-weight, -afqt, -bmi, -married, -edu_fac) %>% 
-  vtable::st(group = 'age')
-```
 
 # Konklusjon
 
@@ -296,11 +215,3 @@ hoyde %>%
 #| echo: false
 # siste
 ```
-
-Spørsmål:
-
-Hvorfor minusverdier for zeroincome?
-
-Hvorfor samme gjennomsnittsinntekt for highincome?
-
-Sammenheng mellom alder og inntekt når det er så få aldersgrupper?
