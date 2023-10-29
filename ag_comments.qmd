@@ -1,0 +1,12 @@
+---
+title: "ag comments"
+format: html
+editor: visual
+---
+
+-   Dokumentet er reproduserbart. Flott!
+-   Endret litt på referanse for å vise hvordan man benytter inline (Abraham) og ikke-inline sitering. Effektiv bruk av disse gjør det mye enklere å skrive en litteraturgjennomgang.
+-   Flott bruk av hash-pipene label: og fig-cap:
+-   Fra konklusjonen: «Når vi så på høyde og inntekt, ved å sammenligne ulike inntektsgrupper (høy, normal, ingen inntekt), ser vi at det er en minimal forskjell mellom de forskjellige gruppene.» Dette skjønner jeg ikke helt.
+-   Mangler i konklusjonen: For menn og kvinner som er like høye, tjener menn markant mer.
+-   Dette har dere god kontroll på!
