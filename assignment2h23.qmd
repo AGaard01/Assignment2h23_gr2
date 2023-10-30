@@ -59,11 +59,10 @@ I denne oppgaven skal vi bruke datasettet 'heights' for å se på sammenhengen m
 
 # Litteraturgjennomgang
 
-Det finnes mye forskning som peker i retning mot at kvinner tjener mindre enn menn (@bureau; @card2015; @hejase2020).
-Forskning tyder også på at denne forskjellen er en trussel mot økonomisk utvikling i samfunnet @santossilva2021.
+Det finnes mye forskning som peker i retning mot at kvinner tjener mindre enn menn [@bureau] [@card2015] [@hejase2020]. Forskning tyder også på at denne forskjellen er en trussel mot økonomisk utvikling i samfunnet [@santossilva2021].
 
 Det finnes, i tillegg til kjønn, en rekke andre faktorer som kan påvirke hvor mye man tjener.
-En av disse er hvor mye ansiennitet man har (alder), samt ytelse @abraham.
+@abraham hevder f.eks at hvor mye ansiennitet man har (alder), samt ytelse spiller en viktig rolle.
 
 # EDA av datasettet
 
