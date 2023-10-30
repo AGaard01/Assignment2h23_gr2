@@ -55,7 +55,7 @@ hoydeHighInc <- hoyde |>
 
 # Innledning
 
-I denne oppgaven skal vi bruke datasettet \'heights\' for å se på sammenhengen mellom inntekt, høyde, kjønn og alder.
+I denne oppgaven skal vi bruke datasettet 'heights' for å se på sammenhengen mellom inntekt, høyde, kjønn og alder.
 
 # Litteraturgjennomgang
 
@@ -67,7 +67,7 @@ En av disse er hvor mye ansiennitet man har (alder), samt ytelse @abraham.
 
 # EDA av datasettet
 
-Vi skal i denne oppgaven drive på med dataanalyse av tallene fra datasettet \'heights\'.
+Vi skal i denne oppgaven drive på med dataanalyse av tallene fra datasettet 'heights'.
 
 ## Sammenhengen mellom kjønn og inntekt
 
@@ -383,7 +383,7 @@ Her er det også flere menn enn kvinner, noe som kan tyde på at det er flere me
 
 # Konklusjon
 
-I denne oppgaven har vi sett på sammenhengen mellom kjønn, inntekt, høyde og alder ved å bruke datasettet \'heights\'.
+I denne oppgaven har vi sett på sammenhengen mellom kjønn, inntekt, høyde og alder ved å bruke datasettet 'heights'.
 Vi har kommet fram til at det finnes en sammenheng mellom hvilken inntekt man har, og hvilket kjønn man er.
 Kvinner har generelt lavere lønn enn menn, noe som også blir støttet av mye forskning.
 I tillegg, er det flere menn som har svært høy inntekt, mens det er flere kvinner som har 0 i inntekt.
