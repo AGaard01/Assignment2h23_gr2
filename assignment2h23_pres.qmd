@@ -363,12 +363,11 @@ summary_stats <- hoydeNormInc %>%
 print(summary_stats)
 ```
 
--   I den siste tabellen har vi en oversikt over de som har normal inntekt. Her er det også flere menn enn kvinner, noe som kan tyde på at det er flere menn som har svart på undersøkelsen. Tallene holder seg nokså stabile over de forskjellige aldersgruppene.
+-   I den siste tabellen har vi en oversikt over de som har normal inntekt. Her er det også flere menn enn kvinner, noe som kan tyde på at det er flere menn som har svart på undersøkelsen. Tallene holder seg nokså stabilt over de forskjellige aldersgruppene.
 
 # Konklusjon
 
--   Finnes en sammenheng mellom hvilken inntekt man har, og hvilket kjønn man er.
-    Kvinner har generelt lavere inntekt enn menn, noe som også blir støttet av mye forskning.
+-   Finnes en sammenheng mellom hvilken inntekt man har, og hvilket kjønn man er. Kvinner har generelt lavere inntekt enn menn, noe som også blir støttet av mye forskning.
 
 -   Det er flere menn som har svært høy inntekt, mens det er flere kvinner som har 0 i inntekt.
 
