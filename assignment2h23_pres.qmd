@@ -304,7 +304,7 @@ facet_wrap(~sex)
 
 -   Når vi deler opp datasettet i menn og kvinner, kan vi se at det er en klar forskjell i lønn mellom de to kjønnene. I tillegg, ser vi at inntekten synker for menn jo eldre de blir, mens inntekten stiger for kvinner jo eldre de blir.
 
-# Alder menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra alder menn/kvinner i hoydeNormInc.
+# Alder menn/kvinner null inntekt og høy inntekt. Skiller disse seg fra alder menn/kvinner med normal inntekt?
 
 # Alder zero income
 
@@ -323,7 +323,7 @@ count_table <- hoydeZeroInc %>%
 print(count_table)
 ```
 
--   I denne tabellen har vi en oversikt over hvor mange menn og kvinner som har 0 i inntekt for ulike aldre. Først og fremst ser vi at det er flest kvinner med 0 i inntekt, over alle aldre utenom de som er 47 år. Kvinner med 0 i inntekt holder seg også nokså stabilt mellom 48 år og 55 år, med flest på 52 år.
+-   I denne tabellen har vi en oversikt over hvor mange menn og kvinner som har 0 i inntekt for ulike aldre. Først og fremst ser vi at det er flest kvinner med 0 i inntekt, over alle aldre utenom de som er 47 år. Kvinner med 0 i inntekt holder seg også nokså stabilt mellom 48 år og 55 år.
 
 # Alder high income
 
@@ -342,7 +342,7 @@ count_table <- hoydeHighInc %>%
 print(count_table)
 ```
 
--   Her har vi en tabell som viser oss hvem som har en svært høy inntekt. Vi kan her se at det er flest menn som har høy inntekt; det er nesten ingen kvinner i forhold til menn.
+-   Her har vi en tabell som viser oss hvem som har en svært høy inntekt. Vi kan her se at det er flest menn som har høy inntekt; det er nesten ingen kvinner i forhold til menn. Menn med høy inntekt er yngre, kvinner med høy inntekt er eldre.
 
 # Alder normal income
 
@@ -363,7 +363,7 @@ summary_stats <- hoydeNormInc %>%
 print(summary_stats)
 ```
 
--   I den siste tabellen har vi en oversikt over de som har normal inntekt. Her er det også flere menn enn kvinner, noe som kan tyde på at det er flere menn som har svart på undersøkelsen.
+-   I den siste tabellen har vi en oversikt over de som har normal inntekt. Her er det også flere menn enn kvinner, noe som kan tyde på at det er flere menn som har svart på undersøkelsen. Tallene holder seg nokså stabile over de forskjellige aldersgruppene.
 
 # Konklusjon
 
