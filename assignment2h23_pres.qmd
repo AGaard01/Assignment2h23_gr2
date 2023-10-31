@@ -149,7 +149,7 @@ hoydeZeroInc %>%
 ```
 
 -   I gruppen for personer med null i inntekt ser vi at 745 er menn og 995 er kvinner.
--   Vi ser også at menn er gjennomsnittlig litt høyere.
+-   Vi ser også at menn er gjennomsnittlig høyere.
 
 # Høyde høy-inntekt
 
@@ -162,7 +162,7 @@ hoydeHighInc %>%
 ```
 
 -   I gruppen for personer med høy inntekt ser vi at 131 er menn og bare 12 er kvinner.
--   Også her ser vi at menn er gjennomsnittlig litt høyere.
+-   Også her ser vi at menn er gjennomsnittlig høyere.
 
 # Høyde normal-inntekt
 
@@ -367,11 +367,12 @@ print(summary_stats)
 
 # Konklusjon
 
--   Finnes en sammenheng mellom hvilken inntekt man har, og hvilket kjønn man er. Kvinner har generelt lavere inntekt enn menn, noe som også blir støttet av mye forskning.
+-   Finnes en sammenheng mellom hvilken inntekt man har, og hvilket kjønn man er.
+    Kvinner har generelt lavere inntekt enn menn, noe som også blir støttet av mye forskning.
 
 -   Det er flere menn som har svært høy inntekt, mens det er flere kvinner som har 0 i inntekt.
 
--   Når vi så på høyde og inntekt, ved å sammenligne ulike inntektsgrupper (høy, normal, ingen inntekt), ser vi at det er en høy forskjell mellom de forskjellige gruppene.
+-   Når vi så på høyde og inntekt, ved å sammenligne ulike inntektsgrupper (høy, normal, ingen inntekt), ser vi at det er en stor forskjell mellom de forskjellige gruppene.
 
 -   For menn og kvinner som er like høye, tjener menn markant mer.
 
