@@ -1,6 +1,19 @@
 ---
-title: "Assignment 2"
-format: html
+title: "Sammenheng mellom inntekt, kjønn og alder"
+author: "Anine & Asbjørn"
+format: 
+  revealjs:
+    theme: solarized
+    reveal_options:
+    code-fold: true
+    incremental: false
+    smaller: true
+    scrollable: true
+    transition: zoom
+  pptx: 
+    incremental: true
+    fig-asp: 0.7
+    fig-width: 12
 editor: visual
 bibliography: [Assignment2DS.bib]
 ---
@@ -53,25 +66,13 @@ hoydeHighInc <- hoyde |>
   filter(income == 343830)
 ```
 
-# Innledning
-
-I denne oppgaven skal vi bruke datasettet 'heights' for å se på sammenhengen mellom inntekt, høyde, kjønn og alder.
-
 # Litteraturgjennomgang
 
-Det finnes mye forskning som peker i retning mot at kvinner tjener mindre enn menn [@bureau] [@card2015] [@hejase2020].
-Forskning tyder også på at denne forskjellen er en trussel mot økonomisk utvikling i samfunnet [@santossilva2021].
+-   Det finnes mye forskning som peker i retning mot at kvinner tjener mindre enn menn [@bureau] [@card2015] [@hejase2020].
+-   Forskning tyder også på at denne forskjellen er en trussel mot økonomisk utvikling i samfunnet [@santossilva2021].
+-   Det finnes, i tillegg til kjønn, en rekke andre faktorer som kan påvirke hvor mye man tjener. @abraham hevder f.eks at hvor mye ansiennitet man har (alder), samt ytelse spiller en viktig rolle.
 
-Det finnes, i tillegg til kjønn, en rekke andre faktorer som kan påvirke hvor mye man tjener.
-@abraham hevder f.eks at hvor mye ansiennitet man har (alder), samt ytelse spiller en viktig rolle.
-
-# EDA av datasettet
-
-Vi skal i denne oppgaven drive på med dataanalyse av tallene fra datasettet 'heights'.
-
-## Sammenhengen mellom kjønn og inntekt
-
-### Høyde og inntekt
+# Høyde og inntekt
 
 ```{r}
 #| echo: false
@@ -99,11 +100,11 @@ geom_smooth(
   )
 ```
 
-I @fig-hoyde-inntekt over ser vi en tilsynelatende sammenheng mellom høyde og inntekt.
-Figuren tyder på at desto høyere man er, desto mer har man i inntekt.
-Men som vi skal se nærmere på nå, så er virkelighete annerledes.
+-   I @fig-hoyde-inntekt ser vi en tilsynelatende sammenheng mellom høyde og inntekt.
+-   Figuren tyder på at desto høyere man er, desto mer har man i inntekt.
+-   Stemmer dette?
 
-### Høyde og inntekt mht. kjønn
+# Høyde og inntekt mht. kjønn
 
 ```{r}
 #| echo: false
@@ -132,17 +133,12 @@ geom_smooth(
   facet_wrap(~sex)
 ```
 
-I @fig-hoyde-inntekt-kjonn har vi delt figuren for høyde og inntekt mellom kategoriene menn og kvinner.
-Denne figuren gir oss et annet bilde enn det vi så tidligere.
-Vi ser av figuren at menn tjener mer enn kvinner ettersom regresjonslinjen for menn ligger høyere enn for kvinner, og at det er flere observasjoner av høy inntekt for menn enn for kvinner.
-Dette tyder på at ulikhetene i inntekt ikke bare har noe med høyde å gjøre, men også kjønn, ettersom menn er gjennomsnittlig høyere enn kvinner.
-Dette stemmer med forskning.
+-   I @fig-hoyde-inntekt-kjonn har vi delt figuren for høyde og inntekt mellom kategoriene menn og kvinner.
+-   Menn tjener mer enn kvinner ettersom regresjonslinjen for menn ligger høyere enn for kvinner, og det er flere observasjoner av høy inntekt for menn enn for kvinner.
 
-## Høyde menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra høyde menn/kvinner i hoydeNormInc.
+# **Høyde menn/kvinner i gruppen null-inntekt og høy-inntekt -- Skiller disse seg fra høyde menn/kvinner i gruppen normal-inntekt?**
 
-Videre skal vi undersøke om det finnes kjønnsforskjeller for inntektsgruppene null-inntekt og høy-inntekt, og se om disse skiller seg fra gruppen for normal-inntekt.
-
-### Høyde zero income
+# **Høyde null-inntekt**
 
 ```{r}
 #| echo: false
@@ -152,10 +148,10 @@ hoydeZeroInc %>%
   vtable::st(group = 'sex')
 ```
 
-I gruppen for personer med null i inntekt ser vi at 745 er menn og 995 er kvinner.
-Vi ser også at menn er gjennomsnittlig litt høyere.
+-   I gruppen for personer med null i inntekt ser vi at 745 er menn og 995 er kvinner.
+-   Vi ser også at menn er gjennomsnittlig litt høyere.
 
-### Høyde high income
+# Høyde høy-inntekt
 
 ```{r}
 #| echo: false
@@ -165,10 +161,10 @@ hoydeHighInc %>%
   vtable::st(group = 'sex')
 ```
 
-I gruppen for personer med høy inntekt ser vi at 131 er menn og bare 12 er kvinner.
-Også her ser vi at menn er gjennomsnittlig litt høyere.
+-   I gruppen for personer med høy inntekt ser vi at 131 er menn og bare 12 er kvinner.
+-   Også her ser vi at menn er gjennomsnittlig litt høyere.
 
-### Høyde normal income
+# Høyde normal-inntekt
 
 ```{r}
 #| echo: false
@@ -178,17 +174,16 @@ hoydeNormInc %>%
   vtable::st(group = 'sex')
 ```
 
-Til slutt, for gruppen med personer som har normal inntekt ser vi at 2526 er menn og 2597 er kvinner.
-Menn har en gjennomsnittlig årsinntekt på 54 236 dollar, mens kvinner bare har en gjennomsnittlig årsinntekt på 39 472 dollar.
-Dette stemmer overens med figuren vi så på tidligere, nemlig at menn ser ut til å tjene mer enn kvinner.
-Dette stemmer også overenes med null-inntektsgruppen og høy-inntektsgruppen, hvor flest kvinner hadde null i inntekt og klart flest menn hadde høy inntekt.
+-   For gruppen med personer som har normal inntekt ser vi at 2526 er menn og 2597 er kvinner.
+-   Menn har en gjennomsnittlig årsinntekt på 54 236 dollar, mens kvinner bare har en gjennomsnittlig årsinntekt på 39 472 dollar.
+-   Dette stemmer overens med figuren vi så på tidligere, nemlig at menn ser ut til å tjene mer enn kvinner.
+-   Dette stemmer også overenes med null-inntektsgruppen og høy-inntektsgruppen, hvor flest kvinner hadde null i inntekt og klart flest menn hadde høy inntekt.
 
-## Inntektforskjeller mellom menn og kvinner som er like høye
+# Inntektforskjeller mellom menn og kvinner som er like høye
 
-Vi ønsker også å undersøke inntektsforskjeller mellom menn og kvinner som er like høye.
-Vi skal nå se på fire ulike høyder; 65, 66, 67 og 68 tommer.
+-   Vi ønsker også å undersøke inntektsforskjeller mellom menn og kvinner som er like høye. Vi skal nå se på fire ulike høyder; 65, 66, 67 og 68 tommer.
 
-### Kategori 65 tommer (165,1 cm)
+# Kategori 65 og 66 tommer
 
 ```{r}
 #| echo: false
@@ -201,8 +196,6 @@ hoyde65 <- hoyde %>%
 print(hoyde65)
 ```
 
-### Kategori 66 tommer (167,6 cm)
-
 ```{r}
 #| echo: false
 # Velger variabler og skriver ut tabell. 
@@ -214,11 +207,11 @@ hoyde66 <- hoyde %>%
 print(hoyde66)
 ```
 
-I kategorien 65 tommer, eller 165,1 cm, ser vi at menn har en gjennomsnittlig årsinntekt på 40 643 dollar, mens kvinner har en gjennomsnittlig årsinntekt på 31 189 dollar.
-I kategorien 66 tommer, eller 167,6 cm, ser vi at menn har en gjennomsnittlig årsinntekt på 32 081 dollar, mens kvinner har en gjennomsnittlig årsinntekt på 31 825 dollar.
-Vi ser også at det er flere observasjoner for kvinner enn det er for menn i både gruppen for 65 og 66 tommer høyde, som stemmer overenes med antakelsen om at kvinner er gjennomsnittlig lavere enn menn.
+-   I kategorien 65 tommer, eller 165,1 cm, ser vi at menn har en gjennomsnittlig årsinntekt på 40 643 dollar, mens kvinner har en gjennomsnittlig årsinntekt på 31 189 dollar.
+-   I kategorien 66 tommer, eller 167,6 cm, ser vi at menn har en gjennomsnittlig årsinntekt på 32 081 dollar, mens kvinner har en gjennomsnittlig årsinntekt på 31 825 dollar.
+-   Vi ser også at det er flere observasjoner for kvinner enn det er for menn i både gruppen for 65 og 66 tommer høyde, som stemmer overenes med antakelsen om at kvinner er gjennomsnittlig lavere enn menn.
 
-### Kategori 67 tommer (170,2 cm)
+# Kategori 67 tommer (170,2 cm) og kategori 68 tommer (172,7 cm)
 
 ```{r}
 #| echo: false
@@ -230,8 +223,6 @@ hoyde67 <- hoyde %>%
 
 print(hoyde67)
 ```
-
-### Kategori 68 tommer (172,7 cm)
 
 ```{r}
 #| echo: false
@@ -250,11 +241,9 @@ På 68 tommer er forskjellen en del større enn hva den er på 67 tommer.
 Ettersom at det er flere menn som er 68 tommer enn kvinner som er 68 tommer, vil det føre til at gjennomsnittet for inntekt på observasjoner på personer som er høyere bli trukket opp pga.
 den høye inntekten til mennene som er høyere enn kvinnene som tjener mindre.
 
-## Er det markante kjønnsforskjeller i hoydeZeroInc og hoydeHighInc?
+# Sammenhengen mellom ansiennitet (alder) og inntekt
 
-## Sammenhengen mellom ansiennitet (alder) og inntekt
-
-### Alder og inntekt
+# Alder og inntekt
 
 ```{r}
 #| echo: false
@@ -282,9 +271,9 @@ geom_smooth(
   )
 ```
 
-Vi ser på figuren at inntekt for både menn og kvinner holder seg stabil over forskjellige ansiennitet (alder).
+-   Vi ser på figuren at inntekt for både menn og kvinner holder seg stabil over forskjellige ansiennitet (alder).
 
-### Alder og inntekt mht. kjønn
+# Alder og inntekt mht. kjønn
 
 ```{r}
 #| echo: false
@@ -316,9 +305,9 @@ facet_wrap(~sex)
 Når vi deler opp datasettet i menn og kvinner, kan vi se at det er en klar forskjell i lønn mellom de to kjønnene.
 I tillegg, ser vi at inntekten synker for menn jo eldre de blir, mens inntekten stiger for kvinner jo eldre de blir.
 
-## Alder menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra alder menn/kvinner i hoydeNormInc.
+# Alder menn/kvinner i hoydeZeroInc og hoydeHighInc. Skiller disse seg fra alder menn/kvinner i hoydeNormInc.
 
-### Alder zero income
+# Alder zero income
 
 ```{r}
 #| echo: false
@@ -339,7 +328,7 @@ I denne tabellen har vi en oversikt over hvor mange menn og kvinner som har 0 i 
 Først og fremst ser vi at det er flest kvinner med 0 i inntekt, over alle aldre utenom de som er 47 år.
 Kvinner med 0 i inntekt holder seg også nokså stabilt mellom 48 år og 55 år, med flest på 52 år.
 
-### Alder high income
+# Alder high income
 
 ```{r}
 #| echo: false
@@ -359,7 +348,7 @@ print(count_table)
 Her har vi en tabell som viser oss hvem som har en svært høy inntekt.
 Vi kan her se at det er flest menn som har høy inntekt; det er nesten ingen kvinner i forhold til menn.
 
-### Alder normal income
+# Alder normal income
 
 ```{r}
 #| echo: false
